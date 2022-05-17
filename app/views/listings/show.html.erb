@@ -1,10 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @listing %>
+<div class="row">
+     <div class="col-md-6">
+        <div class="thumbnail">
+          <%= image_tag @listing.image.url %>
+       </div>
+     </div>
+     <div class="col-md-6">
+      <h3><%= @listing.name %></h3>
+      <h5><%= number_to_currency(@listing.price) %></h5>
+      <p><%= @listing.description %></p>
+     </div>
+</div>
+<%
+=begin%>
+ <%= render @listing, html: { multipart: true }  %> 
+<%
+=end%>
 
 <div>
-  <%= link_to "Edit this listing", edit_listing_path(@listing) %> |
-  <%= link_to "Back to listings", listings_path %>
+  <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-link"  %> |
+  <%= link_to "Back to listings", listings_path, class: "btn btn-link"  %>
 
-  <%= button_to "Destroy this listing", @listing, method: :delete %>
+
+  <%= button_to "Destroy this listing", @listing, method: :delete, class:"btn btn-danger"%>
 </div>
